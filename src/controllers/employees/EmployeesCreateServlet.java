@@ -64,7 +64,7 @@ public class EmployeesCreateServlet extends HttpServlet {
             if(errors.size() > 0){
                 em.close();
 
-                request.setAttribute(_token, request.getSession().getId());
+                request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("employee", e);
                 request.setAttribute("errors", errors);
 
@@ -74,7 +74,7 @@ public class EmployeesCreateServlet extends HttpServlet {
                 em.getTransaction().begin();
                 em.persist(e);
                 em.getTransaction().commit();
-                request.getSession().setAttribute("flash", "登録が完了しました");
+                request.getSession().setAttribute("flush", "登録が完了しました");
                 em.close();
 
                 response.sendRedirect(request.getContextPath() + "/employees/index");
